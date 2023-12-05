@@ -106,7 +106,6 @@ class ActionApi implements Requester, LoggerAwareInterface {
 			$this->apiUrl,
 			$this->getClientRequestOptions( $request, $request->getParameterEncoding() )
 		) );
-		print_r($response);
 		if (isset($response['query']['userinfo']['id']) && 0 == $response['query']['userinfo']['id']) {
 		    return false;
 		}
