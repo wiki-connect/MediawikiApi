@@ -16,16 +16,16 @@ class Parser extends Service {
 	 *
 	 * @return array the parse result (raw from the api)
 	 */
-	public function parsePage( PageIdentifier $pageIdentifier ): array {
-		return $this->parsePageAsync( $pageIdentifier )->wait();
+	public function parsePage( PageIdentifier $pageIdentifier , array $options = [] ): array {
+		return $this->parsePageAsync( $pageIdentifier , $options )->wait();
 	}
 
 	/**
 	 *
 	 * @return PromiseInterface of array the parse result (raw from the api)
 	 */
-	public function parsePageAsync( PageIdentifier $pageIdentifier ): PromiseInterface {
-		$params = [];
+	public function parsePageAsync( PageIdentifier $pageIdentifier , array $options = [] ): PromiseInterface {
+		$params = $options;
 		if ( $pageIdentifier->getId() !== null ) {
 			$params['pageid'] = $pageIdentifier->getId();
 		} elseif ( $pageIdentifier->getTitle() !== null ) {
