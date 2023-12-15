@@ -27,6 +27,7 @@ use WikiConnect\MediawikiApi\Service\UserBlocker;
 use WikiConnect\MediawikiApi\Service\UserCreator;
 use WikiConnect\MediawikiApi\Service\UserGetter;
 use WikiConnect\MediawikiApi\Service\UserRightsChanger;
+use WikiConnect\MediawikiApi\Service\ImageInfo;
 
 /**
  * @access public
@@ -136,5 +137,8 @@ class MediawikiFactory {
 
 	public function newNamespaceGetter(): NamespaceGetter {
 		return new NamespaceGetter( $this->api );
+	}
+	public function newImageInfo(): ImageInfo {
+		return new ImageInfo( $this->api );
 	}
 }
