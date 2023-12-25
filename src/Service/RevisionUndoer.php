@@ -10,18 +10,18 @@ use WikiConnect\MediawikiApi\DataModel\Revision;
  */
 class RevisionUndoer extends Service {
 
-	public function undo( Revision $revision ): bool {
+	public function undo( Revision $revision , $undoafter = null ): bool {
+	    $params = $this->getParamsFromRevision( $revision );
+	    if ( $undoafter != null ) {
+	        $params['undoafter'] = $undoafter;
+	    }
 		$this->api->request( ActionRequest::simplePost(
 			'edit',
-			$this->getParamsFromRevision( $revision )
+			$params
 		) );
 		return true;
-<<<<<<< HEAD
 	}
-
-=======
-	}	
->>>>>>> bee1a1b (Improve service RevisionUnder)
+	
 	/**
 	 *
 	 * @return array <string int|string|null>
