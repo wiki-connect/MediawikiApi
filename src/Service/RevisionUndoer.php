@@ -16,8 +16,12 @@ class RevisionUndoer extends Service {
 			$this->getParamsFromRevision( $revision )
 		) );
 		return true;
+<<<<<<< HEAD
 	}
 
+=======
+	}	
+>>>>>>> bee1a1b (Improve service RevisionUnder)
 	/**
 	 *
 	 * @return array <string int|string|null>
