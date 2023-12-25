@@ -1,0 +1,25 @@
+{
+    "name": "wiki-connect/mediawiki-api",
+    "type": "library",
+    "description": "A MediaWiki API library",
+    "keywords": ["Mediawiki", "API"],
+    "license": "GPL-3.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "WikiConnect\\MediawikiApi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Gerges Shamon",
+            "email": "gerges.shamoon.dev@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "guzzlehttp/guzzle": "~6.3||~7.0",
+        "guzzlehttp/promises": "~1.0",
+        "psr/log": "~1.0",
+        "mediawiki/oauthclient": "^1.1"
+    }
+}
