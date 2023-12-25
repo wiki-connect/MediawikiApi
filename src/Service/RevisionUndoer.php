@@ -20,8 +20,7 @@ class RevisionUndoer extends Service {
 			$params
 		) );
 		return true;
-	}
-	
+	}	
 	/**
 	 *
 	 * @return array <string int|string|null>
