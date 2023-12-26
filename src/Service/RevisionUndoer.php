@@ -3,6 +3,7 @@
 namespace WikiConnect\MediawikiApi\Service;
 
 use WikiConnect\MediawikiApi\Client\Action\Request\ActionRequest;
+use WikiConnect\MediawikiApi\DataModel\EditInfo;
 use WikiConnect\MediawikiApi\DataModel\Revision;
 
 /**
@@ -10,17 +11,31 @@ use WikiConnect\MediawikiApi\DataModel\Revision;
  */
 class RevisionUndoer extends Service {
 
-	public function undo( Revision $revision , $undoafter = null ): bool {
+	public function undo( Revision $revision , EditInfo $editInfo = null, $undoafter = null ): bool {
 	    $params = $this->getParamsFromRevision( $revision );
 	    if ( $undoafter != null ) {
 	        $params['undoafter'] = $undoafter;
 	    }
+	    if ( $editInfo !== null ) {
+			$params['summary'] = $editInfo->getSummary();
+			if ( $editInfo->getMinor() ) {
+				$params['minor'] = true;
+			}
+			if ( $editInfo->getBot() ) {
+				$params['bot'] = true;
+				$params['assert'] = 'bot';
+			}
+			if ( $editInfo->getMaxlag() ) {
+				$params['maxlag'] = $editInfo->getMaxlag();
+			}
+		}
 		$this->api->request( ActionRequest::simplePost(
 			'edit',
 			$params
 		) );
 		return true;
-	}	
+	}
+	
 	/**
 	 *
 	 * @return array <string int|string|null>
