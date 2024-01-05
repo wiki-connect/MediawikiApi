@@ -51,7 +51,7 @@ class RevisionSaver extends Service {
 			$params['basetimestamp'] = $timestamp;
 		}
 
-		if ( $revision->getPageIdentifier()->getId() !== null && $revision->getPageIdentifier()->getId() > 1 ) {
+		if ( $revision->getPageIdentifier()->getId() !== null ) {
 			$params['pageid'] = $revision->getPageIdentifier()->getId();
 		} else {
 			$params['title'] = $revision->getPageIdentifier()->getTitle()->getTitle();
