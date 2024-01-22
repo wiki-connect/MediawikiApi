@@ -28,6 +28,7 @@ use WikiConnect\MediawikiApi\Service\UserCreator;
 use WikiConnect\MediawikiApi\Service\UserGetter;
 use WikiConnect\MediawikiApi\Service\UserRightsChanger;
 use WikiConnect\MediawikiApi\Service\ImageInfo;
+use WikiConnect\MediawikiApi\Service\ImageDeleter;
 
 /**
  * @access public
@@ -140,5 +141,9 @@ class MediawikiFactory {
 	}
 	public function newImageInfo(): ImageInfo {
 		return new ImageInfo( $this->api );
+	}
+	
+	public function newImageDeleter(): ImageDeleter {
+		return new ImageDeleter( $this->api );
 	}
 }
