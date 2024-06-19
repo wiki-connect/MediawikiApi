@@ -16,11 +16,10 @@ class PageComparative extends Service {
 	        'toid' => $to->getPageIdentifier()->getId()
 	    ];
 	    
-	    array_merge( $extraParams, $params );
 	    
 		$this->api->request( ActionRequest::simplePost(
 			'compare',
-			$params
+			array_merge( $extraParams, $params )
 		) );
 		
 		return true;
@@ -31,11 +30,10 @@ class PageComparative extends Service {
 	        'fromrev' => $from,
 	        'torev' => $to,
 	    ];
-		array_merge( $extraParams, $params );
 		
 		$this->api->request( ActionRequest::simplePost(
 			'compare',
-			$params
+			array_merge( $extraParams, $params )
 		) );
 		return true;
 	}
