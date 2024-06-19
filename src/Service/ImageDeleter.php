@@ -33,5 +33,21 @@ class ImageDeleter extends Service {
 		) );
 		return true;
 	}
+	
+	/**
+	 * @return mixed[]
+	 */
+	private function getDeleteParams( PageIdentifier $identifier, array $extraParams ): array {
+		$params = [];
 
+		if ( $identifier->getId() !== null ) {
+			$params['pageid'] = $identifier->getId();
+		} else {
+			$params['title'] = $identifier->getTitle()->getTitle();
+		}
+
+		$params['token'] = $this->api->getToken( 'delete' );
+
+		return array_merge( $extraParams, $params );
+	}
 }
