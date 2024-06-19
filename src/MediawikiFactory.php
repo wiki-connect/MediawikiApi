@@ -29,6 +29,7 @@ use WikiConnect\MediawikiApi\Service\UserGetter;
 use WikiConnect\MediawikiApi\Service\UserRightsChanger;
 use WikiConnect\MediawikiApi\Service\ImageInfo;
 use WikiConnect\MediawikiApi\Service\ImageDeleter;
+use WikiConnect\MediawikiApi\Service\PageComparative;
 
 /**
  * @access public
@@ -145,5 +146,8 @@ class MediawikiFactory {
 	
 	public function newImageDeleter(): ImageDeleter {
 		return new ImageDeleter( $this->api );
+	}
+	public function newPageComparative(): ImageDeleter {
+		return new PageComparative( $this->api );
 	}
 }
