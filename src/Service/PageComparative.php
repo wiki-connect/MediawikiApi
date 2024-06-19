@@ -10,32 +10,28 @@ use WikiConnect\MediawikiApi\DataModel\Page;
  */
 class PageComparative extends Service {
 
-	public function comparePages( Page $from, Page $to, array $extraParams = [] ): bool {
-	    $params[
+	public function comparePages( Page $from, Page $to, array $extraParams = [] ): array {
+	    $params = [
 	        'fromid' => $from->getPageIdentifier()->getId(),
 	        'toid' => $to->getPageIdentifier()->getId()
 	    ];
 	    
-	    
-		$this->api->request( ActionRequest::simplePost(
+		return $this->api->request( ActionRequest::simplePost(
 			'compare',
 			array_merge( $extraParams, $params )
 		) );
-		
-		return true;
 	}
 
-	public function compareRevisions( int $from, int $to, array $extraParams = [] ): bool {
+	public function compareRevisions( int $from, int $to, array $extraParams = [] ): array {
 	    $params = [
 	        'fromrev' => $from,
 	        'torev' => $to,
 	    ];
 		
-		$this->api->request( ActionRequest::simplePost(
+		return $this->api->request( ActionRequest::simplePost(
 			'compare',
 			array_merge( $extraParams, $params )
 		) );
-		return true;
 	}
 
 }

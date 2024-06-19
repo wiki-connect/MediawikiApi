@@ -147,7 +147,7 @@ class MediawikiFactory {
 	public function newImageDeleter(): ImageDeleter {
 		return new ImageDeleter( $this->api );
 	}
-	public function newPageComparative(): ImageDeleter {
+	public function newPageComparative(): PageComparative {
 		return new PageComparative( $this->api );
 	}
 }
