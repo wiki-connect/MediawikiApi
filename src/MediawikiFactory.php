@@ -30,6 +30,7 @@ use WikiConnect\MediawikiApi\Service\UserRightsChanger;
 use WikiConnect\MediawikiApi\Service\ImageInfo;
 use WikiConnect\MediawikiApi\Service\ImageDeleter;
 use WikiConnect\MediawikiApi\Service\PageComparative;
+use WikiConnect\MediawikiApi\Service\Searcher;
 
 /**
  * @access public
@@ -149,5 +150,8 @@ class MediawikiFactory {
 	}
 	public function newPageComparative(): PageComparative {
 		return new PageComparative( $this->api );
+	}
+	public function newSearcher(): Searcher {
+		return new Searcher( $this->api );
 	}
 }
